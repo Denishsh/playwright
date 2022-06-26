@@ -1,7 +1,7 @@
 const { firefox } = require('playwright');
 
 const userFile = require("./user");
-let email = "123";
+let email = userFile.email;
 let pass = userFile.pass;
 
 (async () => {
@@ -32,7 +32,7 @@ let pass = userFile.pass;
   await page.fill('[placeholder="Email"]', '12345@gmail.ru');
   await page.fill('[placeholder="Пароль"]', '12345');
   await page.click('text=Войти');
-  
+
   const check = await page.waitForSelector("text=Вы ввели неправильно логин или пароль");
   await browser.close();
 })();
